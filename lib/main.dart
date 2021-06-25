@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'common/routes/app_pages.dart';
 import 'pages/welcome/welcomePage.dart';
-import 'routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: WelcomePage(),
       debugShowCheckedModeBanner: false,
-      routes: staticRoutes,
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }
