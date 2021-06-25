@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
+import 'package:flutter_news/pages/sign_in/sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({key}) : super(key: key);
@@ -79,7 +81,7 @@ class WelcomePage extends StatelessWidget {
   }
 
   /// 开始按钮
-  Widget _buildStartButton() {
+  Widget _buildStartButton(BuildContext context) {
     return Container(
       width: 295.w2,
       height: 44.h2,
@@ -150,7 +152,7 @@ class WelcomePage extends StatelessWidget {
           ),
           child: Text("Get started"),
           //添加一个点击事件
-          onPressed: () {}),
+          onPressed: () => Get.to(SignInPage())),
     );
   }
 
@@ -191,7 +193,7 @@ class WelcomePage extends StatelessWidget {
                 40,
               ),
               Spacer(),
-              _buildStartButton(),
+              _buildStartButton(context),
             ],
           ),
         ),
