@@ -11,7 +11,7 @@ class WelcomePage extends StatelessWidget {
   /// 页头标题
   Widget _buildPageHeadTitle() {
     return Container(
-      margin: EdgeInsets.only(top: 65.w2),
+      margin: EdgeInsets.only(top: 65.2),
       child: Text(
         "Features",
         textAlign: TextAlign.center,
@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
             color: AppColors.primaryText,
             fontFamily: "Montserrat",
             fontWeight: FontWeight.w600,
-            fontSize: 24.sp2),
+            fontSize: 24.sp),
       ),
     );
   }
@@ -27,9 +27,9 @@ class WelcomePage extends StatelessWidget {
   /// 页头说明
   Widget _buildPageHeaderDetail() {
     return Container(
-      width: 242.w2,
-      height: 70.h2,
-      margin: EdgeInsets.only(top: (14.h2)),
+      width: 242.w,
+      height: 70.h,
+      margin: EdgeInsets.only(top: (14.h)),
       child: Text(
         "The best of news channels all in one place. Trusted sources and personalized news for you.",
         textAlign: TextAlign.center,
@@ -37,7 +37,7 @@ class WelcomePage extends StatelessWidget {
           color: AppColors.primaryText,
           fontFamily: "Avenir",
           fontWeight: FontWeight.normal,
-          fontSize: 16.sp2,
+          fontSize: 16.sp,
           height: 1.3,
         ),
       ),
@@ -48,14 +48,14 @@ class WelcomePage extends StatelessWidget {
   /// 宽度 80 + 20 + 195 = 295
   Widget _buildFeatureItem(String imageName, String intro, double marginTop) {
     return Container(
-      width: 295.w2,
-      height: 80.h2,
-      margin: EdgeInsets.only(top: marginTop.h2),
+      width: 295.w,
+      height: 80.h,
+      margin: EdgeInsets.only(top: marginTop.h),
       child: Row(
         children: [
           Container(
-            width: 80.w2,
-            height: 80.w2,
+            width: 80.w,
+            height: 80.w,
             child: Image.asset(
               "assets/images/$imageName.png",
               fit: BoxFit.none,
@@ -63,7 +63,7 @@ class WelcomePage extends StatelessWidget {
           ),
           Spacer(),
           Container(
-            width: 195.w2,
+            width: 195.w,
             child: Text(
               intro,
               textAlign: TextAlign.left,
@@ -71,7 +71,7 @@ class WelcomePage extends StatelessWidget {
                 color: AppColors.primaryText,
                 fontFamily: "Avenir",
                 fontWeight: FontWeight.normal,
-                fontSize: 16.sp2,
+                fontSize: 16.sp,
               ),
             ),
           ),
@@ -83,10 +83,10 @@ class WelcomePage extends StatelessWidget {
   /// 开始按钮
   Widget _buildStartButton(BuildContext context) {
     return Container(
-      width: 295.w2,
-      height: 44.h2,
+      width: 295.w,
+      height: 44.h,
       margin: EdgeInsets.only(
-        bottom: 20.h2,
+        bottom: 20.h,
       ),
       // child: FlatButton(
       //   color: AppColors.primaryElement,
@@ -104,7 +104,7 @@ class WelcomePage extends StatelessWidget {
             textStyle: MaterialStateProperty.all(TextStyle(
                 fontFamily: "Montserrat",
                 fontWeight: FontWeight.w600,
-                fontSize: 15.sp2)),
+                fontSize: 15.sp)),
             //设置按钮上字体与图标的颜色
             foregroundColor:
                 MaterialStateProperty.all(AppColors.primaryElementText),
@@ -148,11 +148,11 @@ class WelcomePage extends StatelessWidget {
             // MaterialStateProperty.all(BorderSide(color: Colors.yellow, width: 1)),
             //外边框装饰 会覆盖 side 配置的样式
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6.r2))),
+                borderRadius: BorderRadius.circular(6.r))),
           ),
           child: Text("Get started"),
           //添加一个点击事件
-          onPressed: () => Get.to(SignInPage())),
+          onPressed: () => Get.to(() => SignInPage())),
     );
   }
 

@@ -1,3 +1,3 @@
 library utils;
-
-export 'screen.dart';
+export 'validator.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
