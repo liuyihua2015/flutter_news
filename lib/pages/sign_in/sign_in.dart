@@ -228,14 +228,16 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      child: Column(
-        children: <Widget>[
-          _buildLogo(),
-          // _buildInputForm(),
-          // Spacer(),
-          // _buildThirdPartyLogin(),
-          // _buildSignupButton(),
-        ],
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            _buildLogo(),
+            _buildInputForm(),
+            Spacer(),
+            _buildThirdPartyLogin(),
+            _buildSignupButton(),
+          ],
+        ),
       ),
     ));
   }
