@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/common/widgets/widgets.dart';
+import 'package:flutter_news/pages/sign_up/sign_up.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -213,7 +214,7 @@ class _SignInPageState extends State<SignInPage> {
     return Container(
       margin: EdgeInsets.only(bottom: 20.h),
       child: btnFlatButtonWidget(
-        onPressed: () => {},
+        onPressed: () => Get.to(() => SignUpPage()),
         width: 294,
         gbColor: AppColors.secondaryElement,
         fontColor: AppColors.primaryText,

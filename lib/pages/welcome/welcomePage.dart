@@ -3,7 +3,6 @@ import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/pages/sign_in/sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({key}) : super(key: key);
