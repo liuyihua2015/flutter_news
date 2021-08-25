@@ -20,7 +20,7 @@ Widget btnFlatButtonWidget({
     child: TextButton(
       style: ButtonStyle(
         textStyle: MaterialStateProperty.all(TextStyle(
-          fontSize: 16.sp,
+          fontSize: fontSize.sp,
         )),
         foregroundColor: MaterialStateProperty.resolveWith(
           (states) {

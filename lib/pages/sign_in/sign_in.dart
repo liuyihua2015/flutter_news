@@ -93,8 +93,8 @@ class _SignInPageState extends State<SignInPage> {
   //登录表单
   Widget _buildInputForm() {
     return Container(
-      width: 295.sp,
-      margin: EdgeInsets.only(top: 49.sp),
+      // width: 295.sp,
+      margin: EdgeInsets.fromLTRB(40.w, 49.sp, 40.w, 0),
       child: Column(
         children: [
           //email input
@@ -126,7 +126,8 @@ class _SignInPageState extends State<SignInPage> {
                 btnFlatButtonWidget(
                     onPressed: _handleSignIn,
                     gbColor: AppColors.primaryElement,
-                    title: "Sing in")
+                    title: "Sing in",
+                )
               ],
             ),
           ),
