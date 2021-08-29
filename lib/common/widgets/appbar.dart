@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/common/values/colors.dart';
 
 /// 透明背景 AppBar
 AppBar transparentAppBar({
