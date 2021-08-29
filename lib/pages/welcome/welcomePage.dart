@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news/common/routes/app_pages.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
+import 'package:flutter_news/global.dart';
 import 'package:flutter_news/pages/sign_in/sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -151,8 +153,14 @@ class WelcomePage extends StatelessWidget {
           ),
           child: Text("Get started"),
           //添加一个点击事件
-          onPressed: () => Get.to(() => SignInPage())),
+          onPressed: handleNavSignIn),
     );
+  }
+
+  // 跳转 注册界面
+  handleNavSignIn() {
+    Global.saveAlreadyOpen();
+    Get.offAndToNamed(AppRoutes.SignInPage);
   }
 
   @override

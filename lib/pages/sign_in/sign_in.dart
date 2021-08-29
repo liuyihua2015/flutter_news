@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news/common/apis/apis.dart';
 import 'package:flutter_news/common/entities/user.dart';
+import 'package:flutter_news/common/routes/app_pages.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/common/widgets/widgets.dart';
+import 'package:flutter_news/global.dart';
 import 'package:flutter_news/pages/sign_up/sign_up.dart';
 
 class SignInPage extends StatefulWidget {
@@ -174,7 +176,9 @@ class _SignInPageState extends State<SignInPage> {
     UserLoginResponseEntity userProfile = await UserAPI.login(
       params: params,
     );
-    toastInfo(msg:userProfile.toString());
+    Global.saveProfile(userProfile);
+    
+    Get.offAndToNamed(AppRoutes.Application);
 
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
