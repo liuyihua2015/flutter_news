@@ -3,12 +3,9 @@ import 'package:flutter_news/common/apis/apis.dart';
 import 'package:flutter_news/common/entities/categories.dart';
 import 'package:flutter_news/common/entities/channels.dart';
 import 'package:flutter_news/common/entities/news.dart';
-import 'package:flutter_news/common/values/colors.dart';
-import 'package:flutter_news/common/widgets/image.dart';
 import 'package:flutter_news/pages/main/categories_widget.dart';
-import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/pages/main/channels_widget.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_news/pages/main/recommend_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -67,101 +64,9 @@ class _MainPageState extends State<MainPage> {
 
   // 推荐阅读
   Widget _buildRecommend() {
-    return Container(
-      margin: EdgeInsets.all(20.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          //图
-          imageCached(
-            _newsRecommend.thumbnail.toString(),
-            width: 335.w,
-            height: 290.h,
-          ),
-          //作者
-          Container(
-            margin: EdgeInsets.only(top: 14.h),
-            child: Text(
-              _newsRecommend.author.toString(),
-              style: TextStyle(
-                  fontFamily: 'Avenir',
-                  fontWeight: FontWeight.normal,
-                  color: AppColors.thirdElementText,
-                  fontSize: 14.sp),
-            ),
-          ),
-          //标题
-          Container(
-            margin: EdgeInsets.only(top: 10.h),
-            child: Text(
-              _newsRecommend.title.toString(),
-              style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primaryText,
-                  fontSize: 24.sp,
-                  height: 1),
-            ),
-          ),
-          //一行3列
-          Container(
-            margin: EdgeInsets.only(top: 10.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                //分类
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 120,
-                  ),
-                  child: Text(
-                    _newsRecommend.category.toString(),
-                    style: TextStyle(
-                        fontFamily: 'Avenir',
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.secondaryElementText,
-                        fontSize: 14.sp,
-                        height: 1),
-                    overflow: TextOverflow.clip,
-                    maxLines: 1,
-                  ),
-                ),
-                //添加时间
-                Container(
-                  width: 15.w,
-                ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 120,
-                  ),
-                  child: Text(
-                  '• ${duTimeLineFormat(_newsRecommend.addtime)}',
-                    style: TextStyle(
-                        fontFamily: 'Avenir',
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.thirdElementText,
-                        fontSize: 14.sp,
-                        height: 1),
-                    overflow: TextOverflow.clip,
-                    maxLines: 1,
-                  ),
-                ),
-                //更多
-                Spacer(),
-                InkWell(
-                  child: Icon(
-                    Icons.more_horiz,
-                    color: AppColors.primaryText,
-                    size: 24,
-                  ),
-                  onTap: (){},
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+    return _newsRecommend == null
+        ? Container()
+        : recommendWidget(_newsRecommend);
   }
 
   // 频道
