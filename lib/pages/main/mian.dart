@@ -22,11 +22,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late NewsPageListResponseEntity _newsPageList; // 新闻翻页
-  late NewsItem _newsRecommend; // 新闻推荐
-  late List<CategoryResponseEntity> _categories; // 分类
-  late List<ChannelResponseEntity> _channels; // 频道
-  late String _selCategoryCode; // 选中的分类Code
+   NewsPageListResponseEntity? _newsPageList; // 新闻翻页
+   NewsItem? _newsRecommend; // 新闻推荐
+   List<CategoryResponseEntity> _categories = []; // 分类
+   List<ChannelResponseEntity> _channels = []; // 频道
+   String? _selCategoryCode; // 选中的分类Code
 
   @override
   void initState() {
@@ -61,8 +61,8 @@ class _MainPageState extends State<MainPage> {
     _newsPageList = await NewsAPI.newsPageList(
       cacheDisk: true,
     );
-    if (_categories.length > 0) {
-      _selCategoryCode = _categories.first.code!;
+    if (_categories.isNotEmpty) {
+      _selCategoryCode = _categories.first.code;
     }
     if (mounted) {
       setState(() {});
@@ -93,7 +93,7 @@ class _MainPageState extends State<MainPage> {
 
   // 分类菜单
   Widget _buildCategories() {
-    return _categories == null
+    return _categories.isEmpty
         ? Container()
         : newsCategoriesWidget(
             categories: _categories,
@@ -108,7 +108,7 @@ class _MainPageState extends State<MainPage> {
   Widget _buildRecommend() {
     return _newsRecommend == null
         ? Container()
-        : recommendWidget(_newsRecommend);
+        : recommendWidget(_newsRecommend!);
   }
 
   // 频道
@@ -124,14 +124,14 @@ class _MainPageState extends State<MainPage> {
             height: (161.0 * 5 + 100.0).h,
           )
         : Column(
-            children: _newsPageList.items!.map((item) {
+            children: _newsPageList!.items!.map((item) {
               // 新闻行
               List<Widget> widgets = <Widget>[
                 newsItem(item),
                 Divider(height: 1),
               ];
               // 每 5 条 显示广告
-              int index = _newsPageList.items!.indexOf(item);
+              int index = _newsPageList!.items!.indexOf(item);
               if (((index + 1) % 5) == 0) {
                 widgets.addAll(<Widget>[
                   adWidget(),

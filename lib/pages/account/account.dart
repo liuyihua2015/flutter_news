@@ -317,7 +317,8 @@ class _AccountPageState extends State<AccountPage> {
           ),
           _buildCell(
             title: "Log out",
-            hasArrow: true,
+            subTitle: Global.profile.displayName.toString(),
+            hasArrow: false,
             // onTap: () => goLoginPage(context),
             onTap: () => goLoginPage(),
           ),
