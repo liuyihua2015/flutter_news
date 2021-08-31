@@ -8,3 +8,4 @@ export 'security.dart';
 export 'storage.dart';
 export 'iconfont.dart';
 export 'date.dart';
+export 'authentication.dart';

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news/common/utils/utils.dart';
+import 'package:flutter_news/common/values/values.dart';
 
 /// 透明背景 AppBar
 AppBar transparentAppBar({
@@ -16,5 +18,15 @@ AppBar transparentAppBar({
         : null,
     leading: leading,
     actions: actions,
+  );
+}
+
+/// 10像素 Divider
+Widget divider10Px({Color bgColor = AppColors.secondaryElement}) {
+  return Container(
+    height: 10.w,
+    decoration: BoxDecoration(
+      color: bgColor,
+    ),
   );
 }

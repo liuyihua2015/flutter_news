@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/common/widgets/widgets.dart';
+import 'package:flutter_news/pages/account/account.dart';
 import 'package:flutter_news/pages/main/mian.dart';
 // import 'package:flutter_news/pages/account/account.dart';
 // import 'package:flutter_news/pages/bookmarks/bookmarks.dart';
@@ -138,11 +139,11 @@ class _ApplicationState extends State<Application>
         MainPage(),
         Text("CategoryPage"),
         Text("BookmarksPage"),
-        Text("AccountPage"),
+        AccountPage(),
         // MainPage(),
         // CategoryPage(),
         // BookmarksPage(),
-        // AccountPage(),
+
       ],
       controller: _pageController,
       onPageChanged: _handlePageChanged,
