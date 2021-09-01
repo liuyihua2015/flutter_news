@@ -17,6 +17,9 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  FocusNode blankNode = FocusNode(); //空白焦点,不赋值给任何focusNode
+  FocusNode passwordNode = FocusNode(); //密码框焦点
+
   //email的控制器
   final TextEditingController _emailController = TextEditingController();
 
@@ -106,13 +109,23 @@ class _SignInPageState extends State<SignInPage> {
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               hintText: "Email",
-              marginTop: 0),
+              marginTop: 0,
+              focusNode: blankNode,
+              onEditingComplete: () {
+                FocusScope.of(context).requestFocus(passwordNode); //焦点付给密码输入框
+              }),
           //password input
           inputTextEdit(
               controller: _passController,
               keyboardType: TextInputType.visiblePassword,
               hintText: "Password",
-              isPassword: true),
+              isPassword: true,
+              textInputAction: TextInputAction.done,
+              focusNode: passwordNode,
+              onEditingComplete: () {
+                FocusScope.of(context).requestFocus(blankNode); //焦点付给密码输入框
+                _handleSignIn();
+              }),
 
           //注册、登录 横向布局
           Container(
@@ -128,9 +141,9 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 Spacer(),
                 btnFlatButtonWidget(
-                    onPressed: _handleSignIn,
-                    gbColor: AppColors.primaryElement,
-                    title: "Sing in",
+                  onPressed: _handleSignIn,
+                  gbColor: AppColors.primaryElement,
+                  title: "Sing in",
                 )
               ],
             ),
@@ -177,13 +190,12 @@ class _SignInPageState extends State<SignInPage> {
       params: params,
     );
     Global.saveProfile(userProfile);
-    
+
     Get.offAndToNamed(AppRoutes.Application);
 
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
-
-    }
+  }
 
   //第三方登录
   Widget _buildThirdPartyLogin() {
@@ -249,18 +261,19 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false, //输入框抵住键盘
         body: Container(
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            _buildLogo(),
-            _buildInputForm(),
-            Spacer(),
-            _buildThirdPartyLogin(),
-            _buildSignupButton(),
-          ],
-        ),
-      ),
-    ));
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                _buildLogo(),
+                _buildInputForm(),
+                Spacer(),
+                _buildThirdPartyLogin(),
+                _buildSignupButton(),
+              ],
+            ),
+          ),
+        ));
   }
 }

@@ -62,16 +62,16 @@ class _AccountPageState extends State<AccountPage> {
                       Align(
                         alignment: Alignment.topCenter,
                         child: Container(
-                          width: 108.w,
-                          height: 108.w,
+                          width: 108.h,
+                          height: 108.h,
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
                               Positioned(
                                 top: 0,
                                 child: Container(
-                                  width: 108.w,
-                                  height: 108.w,
+                                  width: 108.h,
+                                  height: 108.h,
                                   decoration: BoxDecoration(
                                     color: AppColors.primaryBackground,
                                     boxShadow: [
@@ -82,11 +82,11 @@ class _AccountPageState extends State<AccountPage> {
                                   ),
                                 ),
                               Positioned(
-                                top: 6,
+                                top: 10,
                                 child: Image.asset(
                                   "assets/images/account_header.png",
-                                  height: 88.h,
-                                  width: 88.h,
+                                  height: 90.h,
+                                  width: 90.h,
                                   fit: BoxFit.fill,
                                 ),
                               ),

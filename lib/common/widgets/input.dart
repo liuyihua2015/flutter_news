@@ -5,9 +5,12 @@ import 'package:flutter_news/common/values/values.dart';
 Widget inputTextEdit({
   @required TextEditingController? controller,
   TextInputType keyboardType = TextInputType.text,
+  TextInputAction textInputAction = TextInputAction.next,
+  FocusNode? focusNode,
   String hintText = '',
   bool isPassword = false,
   double marginTop = 15,
+  VoidCallback? onEditingComplete,
 }) {
   return Container(
     height: 44.sp,
@@ -19,6 +22,8 @@ Widget inputTextEdit({
     child: TextField(
       controller: controller,
       keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      focusNode: focusNode,
       decoration: InputDecoration(
           hintText: hintText,
           contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
@@ -32,10 +37,10 @@ Widget inputTextEdit({
       autocorrect: false,
       //自动修正
       obscureText: isPassword, //隐藏输入内容，密码框
+      onEditingComplete: onEditingComplete,
     ),
   );
 }
-
 
 /// email 输入框
 /// 背景白色，文字黑色，带阴影
