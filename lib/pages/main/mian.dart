@@ -5,6 +5,7 @@ import 'package:flutter_news/common/apis/apis.dart';
 import 'package:flutter_news/common/entities/categories.dart';
 import 'package:flutter_news/common/entities/channels.dart';
 import 'package:flutter_news/common/entities/news.dart';
+import 'package:flutter_news/common/routes/app_pages.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/pages/main/ad.dart';
@@ -22,11 +23,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-   NewsPageListResponseEntity? _newsPageList; // 新闻翻页
-   NewsItem? _newsRecommend; // 新闻推荐
-   List<CategoryResponseEntity> _categories = []; // 分类
-   List<ChannelResponseEntity> _channels = []; // 频道
-   String? _selCategoryCode; // 选中的分类Code
+  NewsPageListResponseEntity? _newsPageList; // 新闻翻页
+  NewsItem? _newsRecommend; // 新闻推荐
+  List<CategoryResponseEntity> _categories = []; // 分类
+  List<ChannelResponseEntity> _channels = []; // 频道
+  String? _selCategoryCode; // 选中的分类Code
 
   @override
   void initState() {
@@ -71,9 +72,9 @@ class _MainPageState extends State<MainPage> {
 
 // 拉取推荐、新闻
   _loadNewsData(
-      categoryCode, {
-        bool refresh = false,
-      }) async {
+    categoryCode, {
+    bool refresh = false,
+  }) async {
     _selCategoryCode = categoryCode;
     _newsRecommend = await NewsAPI.newsRecommend(
       params: NewsRecommendRequestEntity(categoryCode: categoryCode),
@@ -127,7 +128,11 @@ class _MainPageState extends State<MainPage> {
             children: _newsPageList!.items!.map((item) {
               // 新闻行
               List<Widget> widgets = <Widget>[
-                newsItem(item),
+                newsItem(
+                    item: item,
+                    onComplete: () {
+                      Get.toNamed(AppRoutes.Details, arguments: item);
+                    }),
                 Divider(height: 1),
               ];
               // 每 5 条 显示广告

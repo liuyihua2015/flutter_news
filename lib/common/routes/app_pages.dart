@@ -1,5 +1,6 @@
 import 'package:flutter_news/common/middlewares/middlewares.dart';
 import 'package:flutter_news/pages/application/application.dart';
+import 'package:flutter_news/pages/details/details.dart';
 import 'package:flutter_news/pages/sign_in/sign_in.dart';
 import 'package:flutter_news/pages/sign_up/sign_up.dart';
 import 'package:flutter_news/pages/welcome/welcomePage.dart';
@@ -32,6 +33,10 @@ class AppPages {
       middlewares: [
         RouteAuthMiddleware(priority: 1),
       ],
+    ),
+    GetPage(
+      name: AppRoutes.Details,
+      page: () => DetailsPage(),
     )
   ];
 }

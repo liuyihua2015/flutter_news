@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/common/entities/entitys.dart';
+import 'package:flutter_news/common/routes/app_pages.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 import 'package:flutter_news/common/widgets/widgets.dart';
 
 /// 推荐阅读
-Widget newsItem(NewsItem item) {
-  return  Container(
+Widget newsItem({
+  NewsItem? item,
+  VoidCallback? onComplete,
+}) {
+  return Container(
     height: 161.h,
     padding: EdgeInsets.all(20.h),
     child: Row(
@@ -14,8 +18,7 @@ Widget newsItem(NewsItem item) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         //图
-        imageCached(item.thumbnail.toString(),
-            width: 121.w, height: 121.w),
+        imageCached(item!.thumbnail.toString(), width: 121.w, height: 121.w),
         SizedBox(
           width: 194.w,
           child: Column(
@@ -38,19 +41,24 @@ Widget newsItem(NewsItem item) {
                 ),
               ),
               //标题
-              Container(
-                margin: EdgeInsets.all(0),
-                child: Text(
-                  item.title.toString(),
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryText,
-                    fontSize: 16.sp,
-                    height: 1,
+              InkWell(
+                onTap: onComplete == null ? (){
+                  print("onComplete == null");
+                } : onComplete,
+                child: Container(
+                  margin: EdgeInsets.all(0),
+                  child: Text(
+                    item.title.toString(),
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryText,
+                      fontSize: 16.sp,
+                      height: 1,
+                    ),
+                    overflow: TextOverflow.clip,
+                    maxLines: 3,
                   ),
-                  overflow: TextOverflow.clip,
-                  maxLines: 3,
                 ),
               ),
               //时间
@@ -109,12 +117,10 @@ Widget newsItem(NewsItem item) {
                   ],
                 ),
               ),
-
             ],
           ),
         ),
       ],
     ),
   );
-
 }

@@ -7,5 +7,6 @@ abstract class AppRoutes {
   static const SignUpPage = '/sign-up';//注册页
   static const NotFound   = '/not_found';
   static const Application = '/application';
+  static const Details  = '/details';
 
 }
